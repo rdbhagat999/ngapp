@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "git-deploy": "ng deploy --base-href=/ngapp/"
   },
   "private": true,
   "dependencies": {
