@@ -1,0 +1,1 @@
+(()=>{"use strict";addEventListener("message",({data:t})=>{const e=[];for(let s=1;s<t.n;s++)e.push(s);postMessage(e)})})();
