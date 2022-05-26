@@ -2,8 +2,15 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const recaptchaSitekey = '6LfLU7gaAAAAAK48CBfh68lGeBs3FOw5oDDdFcBL';
+const recaptchaURL = `https://www.google.com/recaptcha/api.js?onload=recaptchaCallback&render=${recaptchaSitekey}`;
+
 export const environment = {
-  production: false
+  production: false,
+  hmr: false,
+  recaptchaSitekey,
+  recaptchaURL,
+  mapApiKey: 'AIzaSyDyoyV8JT6B-lyXiviZKptJdNN1aUEDixg',
 };
 
 /*

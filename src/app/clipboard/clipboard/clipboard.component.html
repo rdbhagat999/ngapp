@@ -1,0 +1,15 @@
+<h4>Today's Lucky Coupon</h4>
+
+<div [ngClass]="isCopied ? 'lucky-coupon coupon-applied' : 'lucky-coupon'">
+  <div class="lucky-coupon-code">{{ couponText }}</div>
+
+  <ng-container *ngIf="isCopied; else elseTemplateCopied">
+    <div class="coupon-copied">Copied!</div>
+  </ng-container>
+
+  <ng-template #elseTemplateCopied>
+    <div (cbOnSuccess)="copied($event)" ngxClipboard [cbContent]="couponText">
+      <i style="cursor: pointer" class="fa fa-copy"></i>
+    </div>
+  </ng-template>
+</div>

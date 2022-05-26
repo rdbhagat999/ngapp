@@ -1,0 +1,53 @@
+<div class="text-center">
+  <button class="btn btn-primary" (click)="loadItems()">Load Items</button>
+</div>
+
+<div class="list-wrapper" *ngIf="dataList">
+  <ul>
+    <ng-container *ngIf="dataList.length; else elseTemplate">
+      <li *ngFor="let item of dataList; trackBy: trackById">
+        <div class="item-wrap">
+          <div class="item-img">
+            <img
+              loading="lazy"
+              src="https://picsum.photos/id/{{
+                item?.id ? item?.id : 10
+              }}/128/128.webp"
+            />
+          </div>
+          <div class="item-content">
+            <label>{{ item?.name | titlecase }}</label>
+            <div>{{ item?.jobtype | titlecase }}</div>
+            <div>{{ item?.email | lowercase }}</div>
+          </div>
+        </div>
+      </li>
+    </ng-container>
+
+    <ng-template #elseTemplate>
+      <!-- Loading Items -->
+      <li class="skeleton" *ngFor="let item of generateFake(5)">
+        <div class="item-wrap">
+          <div class="item-img">
+            <ngx-skeleton-loader
+              appearance="circle"
+              [theme]="{ height: '100px', width: '100px' }"
+            ></ngx-skeleton-loader>
+          </div>
+
+          <div class="item-content">
+            <div>
+              <ngx-skeleton-loader></ngx-skeleton-loader>
+            </div>
+
+            <p>
+              <ngx-skeleton-loader
+                [theme]="{ height: '30px' }"
+              ></ngx-skeleton-loader>
+            </p>
+          </div>
+        </div>
+      </li>
+    </ng-template>
+  </ul>
+</div>

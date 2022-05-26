@@ -1,0 +1,137 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <input
+        type="text"
+        (keypress)="keyPressNumbers($event)"
+        placeholder="Only Integer Numbers"
+      />
+      <br />
+
+      <input
+        type="text"
+        (keypress)="keyPressNumbersDecimal($event)"
+        placeholder="Only Numbers with Decimals"
+      />
+      <br />
+
+      <input
+        type="text"
+        appInputFocus
+        (keypress)="keyPressAlphaNumeric($event)"
+        placeholder="Only AlphaNumeric"
+      />
+      <br />
+
+      <input
+        type="text"
+        (keypress)="keyPressAlphaNumericWithCharacters($event)"
+        placeholder="Allow numbers, alpahbets, space, underscore"
+      />
+    </div>
+
+    <div class="col-sm-12 mt-5">
+      <form [formGroup]="addUserForm" (ngSubmit)="submitUser()" novalidate>
+        <!-- Name control -->
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label"
+            ><span class="required-asterisk">*</span>Name</label
+          >
+          <div class="col-sm-10">
+            <!-- Alerts user when control is interacted or form is submitted about errors-->
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control"
+              placeholder="Enter name"
+              [ngClass]="{
+                'is-invalid': name?.invalid && (name?.dirty || name?.touched)
+              }"
+            />
+
+            <!-- Validation messages -->
+            <div
+              class="invalid-feedback"
+              *ngIf="(name?.invalid && name?.dirty) || name?.touched"
+            >
+              <div *ngIf="name?.errors?.['required']">Name is required</div>
+              <div *ngIf="name?.errors?.['pattern']">
+                Name must start with an alphabet with minimum length of 2
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email control -->
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label"
+            ><span class="required-asterisk">*</span>Email</label
+          >
+          <div class="col-sm-10">
+            <input
+              type="text"
+              formControlName="email"
+              class="form-control"
+              placeholder="Enter email"
+              [ngClass]="{
+                'is-invalid': email?.invalid && (email?.dirty || email?.touched)
+              }"
+            />
+
+            <!-- Validation messages -->
+            <div
+              class="invalid-feedback"
+              *ngIf="(email?.invalid && email?.dirty) || email?.touched"
+            >
+              <div *ngIf="email?.errors?.['required']">Email is required</div>
+              <div *ngIf="email?.errors?.['email']">
+                Please provide a valid email
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card control -->
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label"
+            ><span class="required-asterisk">*</span>Card</label
+          >
+          <div class="col-sm-10">
+            <input
+              credit-card
+              type="text"
+              formControlName="card"
+              class="form-control"
+              placeholder="Enter 16-digit card number"
+              [ngClass]="{
+                'is-invalid': card?.invalid && (card?.dirty || card?.touched)
+              }"
+            />
+
+            <!-- Validation messages -->
+            <div
+              class="invalid-feedback"
+              *ngIf="(card?.invalid && card?.dirty) || card?.touched"
+            >
+              <div *ngIf="card?.errors?.['required']">Card is required</div>
+              <div *ngIf="card?.errors?.['card']">
+                Please provide a valid card
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address control -->
+        <app-address [parent]="addUserForm"></app-address>
+
+        <button
+          type="submit"
+          [disabled]="addUserForm?.invalid"
+          class="btn btn-primary"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
