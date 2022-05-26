@@ -34,6 +34,7 @@ import { Component, VERSION } from '@angular/core';
   ],
 })
 export class AppComponent {
+  title = 'ngapp';
   name = 'Angular ' + VERSION.full;
   isCollapsed = true;
   token: string | undefined;

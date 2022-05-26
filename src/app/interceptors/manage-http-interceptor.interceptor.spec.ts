@@ -1,16 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ManageHttpInterceptorInterceptor } from './manage-http-interceptor.interceptor';
+import { ManageHttpInterceptor } from './manage-http-interceptor.interceptor';
 
-describe('ManageHttpInterceptorInterceptor', () => {
+describe('ManageHttpInterceptor', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
-      ManageHttpInterceptorInterceptor
+      ManageHttpInterceptor
       ]
   }));
 
   it('should be created', () => {
-    const interceptor: ManageHttpInterceptorInterceptor = TestBed.inject(ManageHttpInterceptorInterceptor);
+    const interceptor: ManageHttpInterceptor = TestBed.inject(ManageHttpInterceptor);
     expect(interceptor).toBeTruthy();
   });
 });
